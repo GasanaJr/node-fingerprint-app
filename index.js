@@ -25,7 +25,7 @@ try {
     console.error(error);
 }
 
-app.get('/register-print', async (req, res) => {
+app.get('/register', async (req, res) => {
     try {
         const dataToSend = { userId: '20 ' };
         const response = await axios.post('http://localhost:5000/fingerprint/register', dataToSend);
