@@ -25,10 +25,10 @@ try {
     console.error(error);
 }
 
-app.get('/register-print', async (req, res) => {
+app.get('/register', async (req, res) => {
     try {
         const dataToSend = { userId: '20 ' };
-        const response = await axios.post('http://localhost:5000/fingerprint/register', dataToSend);
+        const response = await axios.post('http://localhost:5212/fingerprint/register', dataToSend);
         res.json({message: response.data});
     } catch (error) {
         console.error('Error calling .NET API:', error.message);
