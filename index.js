@@ -15,7 +15,9 @@ app.use(express.json({ limit: '50mb' }));  // Set this limit to what you expect 
 
 // Increase the limit for URL-encoded form data
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
-app.use(cors())
+app.use(cors({
+    origin: '*'
+}))
 
 try {
     mongoose.connect(process.env.DB_URL).then(() => {
@@ -28,10 +30,10 @@ try {
 app.get('/register', async (req, res) => {
     try {
         const dataToSend = { userId: '20 ' };
-        const response = await axios.post('http://localhost:5212/fingerprint/register', dataToSend);
+        const response = await axios.post(' https://a324-2c0f-eb68-205-4c00-9830-d4ae-1a58-3366.ngrok-free.app/fingerprint/register', dataToSend);
         res.json({message: response.data});
     } catch (error) {
-        console.error('Error calling .NET API:', error.message);
+        console.error('Error calling .NET API:', error);
         res.status(500).send('Failed to register fingerprint');
     }
 });
